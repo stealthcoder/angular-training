@@ -67,13 +67,15 @@ salesPersonList: SalesPerson[] = [
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   ```
 
-- #3 Apply Bootstrap CSS styles in component HTML template
+- #3 Apply Bootstrap CSS styles in component HTML template 
   ```html
+  # app.component.html
   <div class="container">
     <h1 class="mt-3 mb-3">Sales Team</h1>
   ```
 - #4 Apply Bootstrap CSS styles in component HTML table
   ```html
+  # sales-person-list-bootstrap.component.html
   <table class="table table-hover">
     <thead class="table-dark">
         <tr>
@@ -86,8 +88,9 @@ salesPersonList: SalesPerson[] = [
     <tbody>
   ```
 
-- Update Typescript component file to reference Bootstrap HTML template (sales-person-list.component.ts)
+- Update Typescript component file to reference Bootstrap HTML template 
   ```typescript
+  # sales-person-list.component.ts
   @Component({
     selector: 'app-sales-person-list',
     // templateUrl: './sales-person-list.component.html',
