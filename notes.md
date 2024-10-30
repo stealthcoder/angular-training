@@ -142,9 +142,11 @@ Angular Pipes for Formatting (`CurrencyPipe`, `DatePipe`, `DecimalPipe`, etc.)
        'class2': !condition (else)
     }">
    ```
-   Apply logic
+   Apply to logic
    
    ```html
+   # sales-person-list-bootstrap.component.html
+   
   <tr *ngFor="let tempSalesPerson of salesPersonList" [ngClass]="{'highlight': tempSalesPerson.salesVolume >= 60000}">
         <td>{{ tempSalesPerson.firstName }}</td>
         <td>{{ tempSalesPerson.lastName }}</td>
