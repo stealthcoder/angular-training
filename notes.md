@@ -52,7 +52,7 @@ salesPersonList: SalesPerson[] = [
 
 ## 02-angular-integrate-angular-and-bootstrap-table
 
-- Get links for remote Bootstrap files
+- #1 Get links for remote Bootstrap files
   - visit [BootStrap](www.getbootstrap.com) Get Started instructions and copy
   ```html
   <meta name="viewport" content="width=device-width, initial-scale=1">
