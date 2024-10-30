@@ -52,6 +52,8 @@ salesPersonList: SalesPerson[] = [
 
 ## 02-angular-integrate-angular-and-bootstrap-table
 
+### 02.1 Integrate Angular and Bootstrap CSS
+
 - #1 Get links for remote Bootstrap files
   - visit [BootStrap](www.getbootstrap.com) Get Started instructions and copy
   ```html
@@ -89,7 +91,7 @@ salesPersonList: SalesPerson[] = [
     <tbody>
   ```
 
-- Update Typescript component file to reference Bootstrap HTML template 
+- #5 Update Typescript component file to reference Bootstrap HTML template 
   ```typescript
   # sales-person-list.component.ts
   @Component({
@@ -99,3 +101,60 @@ salesPersonList: SalesPerson[] = [
     styleUrl: './sales-person-list.component.css'
   })
   ```
+### 02.2 Conditionals and Formatting
+Structural Directives (`ngFor`, `ngIf`,`ngSwitch`, etc.) and 
+Angular Pipes for Formatting (`CurrencyPipe`, `DatePipe`, `DecimalPipe`, etc.)
+
+- Requirements: 
+  - Add new table column indicating if sales volume meet its quota.
+  - Format sales amount to USD currency.
+  - Add highlighting of entire row if qouta is met.
+  
+- #6 Add ngIf conditional logic on new column
+  ```html
+      <td>
+        <div *ngIf="salesPerson.sales >= 60000; else elseBlock">Yes</div>
+        <ng-template #elseBlock>No</ng-template>
+      </td>
+  ```
+- #7 Apply currency formatting using Pipes
+  ```html
+      <td>{{salesPerson.sales | currency:'USD'}}</td>
+  ```
+
+- #8 Apply highlight color on entire row based on condition
+   
+   1. create/update the local CSS style for the affected component
+    ```css
+    # sales-person-list.component.css
+
+    tr.highlight td {
+        background-color: green;
+        font-weight: bold;
+    }
+    ```
+  2. Use `[ngClass]` to apply style to row in the html table
+   
+   ```css
+   # syntax:
+    <div [ngClass]="{
+       'class1': condition  (the true condition),
+       'class2': !condition (else)
+    }">
+   ```
+   Apply logic
+   
+   ```html
+  <tr *ngFor="let tempSalesPerson of salesPersonList" [ngClass]="{'highlight': tempSalesPerson.salesVolume >= 60000}">
+        <td>{{ tempSalesPerson.firstName }}</td>
+        <td>{{ tempSalesPerson.lastName }}</td>
+        <td>{{ tempSalesPerson.email }}</td>
+        <td>{{ tempSalesPerson.salesVolume | currency:'USD'}}</td>
+
+        <td>
+          <div *ngIf="tempSalesPerson.salesVolume >= 60000; else myElseBlock">Yes</div>
+          <ng-template #myElseBlock>No</ng-template>
+        </td>
+  </tr>
+
+   ```
